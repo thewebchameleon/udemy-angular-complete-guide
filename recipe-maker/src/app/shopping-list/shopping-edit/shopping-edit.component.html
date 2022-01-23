@@ -1,0 +1,47 @@
+<form>
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-3">
+        <label for="ingredientName" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="ingredient name"
+          id="ingredientName"
+          #ingredientName
+        />
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="mb-3">
+        <label for="ingredientAmount" class="form-label">Amount</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="amount"
+          id="ingredientAmount"
+          #ingredientAmount
+        />
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="mb-3">
+        <label for="ingredientUnit" class="form-label">Unit</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="unit"
+          id="ingredientUnit"
+          #ingredientUnit
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-success me-2" (click)="onAddItem()">Add</button>
+      <button class="btn btn-danger me-2">Delete</button>
+      <button class="btn btn-primary">Clear</button>
+    </div>
+  </div>
+</form>
