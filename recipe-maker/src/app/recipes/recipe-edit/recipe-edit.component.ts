@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./recipe-edit.component.scss']
 })
 export class RecipeEditComponent implements OnInit, OnDestroy {
-  subs: Subscription[];
+  subs: Subscription[] = [];
   id: number;
   editMode: false;
 

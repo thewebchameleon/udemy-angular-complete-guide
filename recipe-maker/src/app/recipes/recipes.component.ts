@@ -10,7 +10,7 @@ import { RecipeService } from './recipe.service';
   providers: [ RecipeService ]
 })
 export class RecipesComponent implements OnInit, OnDestroy {
-  subs: Subscription[];
+  subs: Subscription[] = [];
   selectedRecipe: Recipe;
 
   constructor(private recipeService: RecipeService) { }

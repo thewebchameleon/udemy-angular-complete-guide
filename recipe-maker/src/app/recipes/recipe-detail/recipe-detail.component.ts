@@ -10,7 +10,7 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe-detail.component.scss']
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
-  subs: Subscription[];
+  subs: Subscription[] = [];
   recipe: Recipe;
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
