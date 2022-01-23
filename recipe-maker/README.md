@@ -1,5 +1,3 @@
-Currently on Secion 11: Changing Pages with Routing
-
 # RecipeMaker
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
