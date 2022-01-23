@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
 
@@ -7,7 +8,8 @@ import { ShoppingListService } from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
+  subs: Subscription[];
   ingredients: Ingredient[];
   selectedIngredient: Ingredient;
 
@@ -15,16 +17,20 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     this.ingredients = this.shoppingListService.getIngredients();
-    this.shoppingListService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => 
+    this.subs.push(this.shoppingListService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => 
     {
       this.ingredients = ingredients
-    });
-    this.shoppingListService.ingredientSelected.subscribe((ingredient: Ingredient) => {
+    }));
+    this.subs.push(this.shoppingListService.ingredientSelected.subscribe((ingredient: Ingredient) => {
       this.selectedIngredient = ingredient;
-    });
+    }));
   }
 
   selectIngredient(ingredient: Ingredient) {
     this.shoppingListService.ingredientSelected.emit(ingredient);
+  }
+
+  ngOnDestroy(): void {
+    this.subs.forEach(s => s.unsubscribe());
   }
 }

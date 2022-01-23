@@ -12,7 +12,8 @@ constructor(private shoppingListService: ShoppingListService) {
 }
     
     private recipes: Recipe[] = [
-        {   name: 'Beef Stroganoff', 
+        {   id: 1,
+            name: 'Beef Stroganoff', 
             description: 'Hearty beef', 
             imageUrl: 'https://www.recipesmadeeasy.co.uk/wp-content/uploads/2018/10/beef-stroganoff-4-2.jpg',
             ingredients: [
@@ -20,6 +21,7 @@ constructor(private shoppingListService: ShoppingListService) {
             ]
         },
         { 
+            id: 2,
             name: 'Chicken A La King', 
             description: 'Delicious creamy chicken', 
             imageUrl: 'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Slow-Cooked-Chicken-a-La-King_exps9664_SSC2919296A03_20_2b_RMS.jpg',
@@ -30,6 +32,10 @@ constructor(private shoppingListService: ShoppingListService) {
 
       getRecipes() : Recipe[] {
         return this.recipes.slice();
+      }
+
+      getRecipe(id: number) : Recipe {
+        return this.recipes.slice().find(r => r.id == id);
       }
 
       addIngredientsToShoppingList(ingredients: Ingredient[]) {
